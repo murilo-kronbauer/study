@@ -1,1 +1,3 @@
 # Alura
+
+Repositório de estudos.
