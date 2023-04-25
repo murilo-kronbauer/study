@@ -1,4 +1,4 @@
-import { Transaction } from "./transaction.model.js";
+import { Transaction } from "./transaction.model";
 
 export class Transactions {
   private transactions: Transaction[] = [];
