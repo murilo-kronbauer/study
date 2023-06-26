@@ -3,6 +3,8 @@ import { Transactions } from "../models/transactions.model.js";
 import { TransactionView } from "../views/transaction.view.js";
 import { MessageView } from "../views/message.view.js";
 import { DaysOfWeek } from "../enums/days-of-week.enum.js";
+import { executionTimeLogger } from "../decorators/execution-time-logger.decorator.js";
+import { inspectMethod } from "../decorators/inspect-method.decorator.js";
 
 export class TransactionController {
   private inputDate: HTMLInputElement;
@@ -21,6 +23,8 @@ export class TransactionController {
     this.transactionView.update(this.transactions);
   }
 
+  @inspectMethod
+  @executionTimeLogger()
   public add(): void {
     const transaction = Transaction.create(
       this.inputDate.value,

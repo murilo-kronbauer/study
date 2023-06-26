@@ -1,8 +1,16 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 import { Transaction } from "../models/transaction.model.js";
 import { Transactions } from "../models/transactions.model.js";
 import { TransactionView } from "../views/transaction.view.js";
 import { MessageView } from "../views/message.view.js";
 import { DaysOfWeek } from "../enums/days-of-week.enum.js";
+import { executionTimeLogger } from "../decorators/execution-time-logger.decorator.js";
+import { inspectMethod } from "../decorators/inspect-method.decorator.js";
 export class TransactionController {
     constructor() {
         this.transactions = new Transactions();
@@ -37,3 +45,7 @@ export class TransactionController {
         return (date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY);
     }
 }
+__decorate([
+    inspectMethod(),
+    executionTimeLogger()
+], TransactionController.prototype, "add", null);

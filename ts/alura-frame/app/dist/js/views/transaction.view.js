@@ -16,7 +16,7 @@ export class TransactionView extends View {
             .map((item) => {
             return `
 					<tr>
-						<td>${this.formatedDate(new Date())}</td>
+						<td>${this.formatDate(item.date)}</td>
 						<td>${item.quantity}</td>
 						<td>${item.value}</td>
 					</tr>
@@ -28,7 +28,7 @@ export class TransactionView extends View {
 		</table>
 		`;
     }
-    formatedDate(date) {
+    formatDate(date) {
         return new Intl.DateTimeFormat().format(date);
     }
 }

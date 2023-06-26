@@ -1,7 +1,9 @@
+import { escapeString } from "../decorators/escape-string.decorator.js";
 import { Transactions } from "../models/transactions.model.js";
 import { View } from "./view.js";
 
 export class TransactionView extends View<Transactions> {
+  @escapeString
   protected template(model: Transactions): string {
     return `
 		<table class="table table-hover table-bordered">
@@ -18,7 +20,7 @@ export class TransactionView extends View<Transactions> {
         .map((item) => {
           return `
 					<tr>
-						<td>${this.formatedDate(new Date())}</td>
+						<td>${this.formatDate(item.date)}</td>
 						<td>${item.quantity}</td>
 						<td>${item.value}</td>
 					</tr>
@@ -31,7 +33,7 @@ export class TransactionView extends View<Transactions> {
 		`;
   }
 
-  private formatedDate(date: Date): string {
+  private formatDate(date: Date): string {
     return new Intl.DateTimeFormat().format(date);
   }
 }
