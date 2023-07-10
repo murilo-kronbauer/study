@@ -1,3 +1,3 @@
-# Alura
+# Study Repository
 
-Repositório de estudos.
+Welcome 👋.
